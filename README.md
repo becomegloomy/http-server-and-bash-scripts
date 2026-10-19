@@ -25,6 +25,7 @@
 cd http-server
 make
 ./http_server 1111 ./www
+```
 
 **Проверка:**
 ```bash
