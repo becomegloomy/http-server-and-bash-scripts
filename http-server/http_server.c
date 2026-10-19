@@ -18,7 +18,7 @@ volatile sig_atomic_t server_running = 1; // Для отслеживания с�
 
 // Обработка сигнала для очистки завершенных процессов
 void handle_sigchld(int sig) {
-    // Ожидание завершения родительского процесса
+    (void)sig;
     while (waitpid(-1, NULL, WNOHANG) > 0);
 }
 
