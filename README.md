@@ -25,9 +25,21 @@ curl -I http://localhost:1111/        # HEAD
 curl -v http://localhost:1111/nope    # 404
 ```
 
+**Тестирование:**
+```bash
+cd http-server
+./tests/run_all.sh
+```
+
 ### Bash Script
 ```bash
 cd bash-script
 ./script.sh --help
 ./script.sh ./src ./dst
+```
+
+**Тестирование:**
+```bash
+cd bash-script
+./tests/run_all.sh
 ```
