@@ -1,0 +1,17 @@
+# C
+*.o
+*.out
+*.exe
+http_server
+
+# Логи
+*.log
+
+# Результаты скрипта
+report.txt
+
+# Временные
+*.tmp
+
+# Системные
+.DS_Store
