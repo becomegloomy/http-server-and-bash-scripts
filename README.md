@@ -32,3 +32,44 @@ make
 curl -v http://localhost:1111/
 curl -I http://localhost:1111/        # HEAD
 curl -v http://localhost:1111/nope    # 404
+```
+
+### Bash Script
+- Проверка аргументов, `--help`
+- Создание каталога назначения (`mkdir -p`)
+- Обработка конфликтов имён (`file.txt` → `file.txt.1`)
+- Логирование в `report.txt`
+
+**Запуск:**
+```bash
+cd bash-script
+./script.sh --help
+./script.sh ./src ./dst
+```
+
+## Стек
+`C`, `POSIX`, `sockets`, `fork`, `signals`, `Bash`, `Linux`
+
+## Структура
+```
+.
+├── http-server/      # HTTP-сервер на C
+│   ├── src/
+│   ├── include/
+│   ├── www/
+│   ├── tests/
+│   ├── Makefile
+│   └── README.md
+└── bash-script/      # Bash-скрипт
+    ├── script.sh
+    ├── tests/
+    └── README.md
+```
+
+## Чему научился
+- Сокеты: `socket` / `bind` / `listen` / `accept`
+- `fork()`: многопроцессность, зомби-процессы
+- Сигналы: `SIGCHLD`, `SIGINT`
+- POSIX I/O vs stdio
+- HTTP/1.1: запрос, ответ, заголовки
+- Bash: аргументы, `--help`, функции, параметрические расширения
