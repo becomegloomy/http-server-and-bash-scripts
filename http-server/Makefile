@@ -4,10 +4,10 @@ TARGET  = http_server
 SRC     = http_server.c
 
 $(TARGET): $(SRC)
-  $(CC) $(CFLAGS) $(SRC) -o $(TARGET)
+	$(CC) $(CFLAGS) $(SRC) -o $(TARGET)
 
 clean:
-  rm -f $(TARGET)
+	rm -f $(TARGET)
 
 test: $(TARGET)
 	./tests/run_all.sh
