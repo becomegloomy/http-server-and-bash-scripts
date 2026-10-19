@@ -118,6 +118,13 @@ int main() {
         exit(EXIT_FAILURE);
     }
 
+    int opt = 1;
+    if (setsockopt(server_socket, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt)) < 0) {
+        perror("setsockopt");
+        close(server_socket);
+        exit(EXIT_FAILURE);
+    }
+
     // Настройка адреса сервера
     memset(&server_addr, 0, sizeof(server_addr)); // очищение адреса
     server_addr.sin_family = AF_INET; //установка семьи адресов
