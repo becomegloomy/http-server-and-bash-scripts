@@ -63,6 +63,8 @@ void send_http_response(int client_socket, const char *header, const char *file_
 // Обработка запроса 
 void handle_client(int client_socket) {
     char buffer[BUFFER_SIZE];
+    char method[16] = {0};
+    char path[256] = {0};
     ssize_t bytes_read;
 
     // Чтение запроса из сокета
@@ -75,16 +77,20 @@ void handle_client(int client_socket) {
 
     buffer[bytes_read] = '\0';
 
-    // Проверка запросов GET и HEAD
-    if (strncmp(buffer, "GET /", 5) == 0) {
+    // Извлечение метода и пути
+    sscanf(buffer, "%15s %255s", method, path);
+
+    // Проверка метода и пути
+    if (strcmp(method, "GET") == 0 && strcmp(path, "/") == 0) {
+        // GET / — отдача index.htm с телом
         const char *response_header = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n";
-        // Отправка HTTP-заголовока и содержимого файла index
         send_http_response(client_socket, response_header, "index.htm", 0);
-    } else if (strncmp(buffer, "HEAD /", 6) == 0) {
-        // Отправка только заголовка
+    } else if (strcmp(method, "HEAD") == 0 && strcmp(path, "/") == 0) {
+        // HEAD / —  только заголовка
         const char *response_header = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n";
         send_http_response(client_socket, response_header, "index.htm", 1);
     } else {
+        // Всё остальное — 404
         const char *response = "HTTP/1.1 404 Not Found\r\nContent-Type: text/html\r\n\r\n"
                                "<html><body><h1>404 Not Found</h1></body></html>";
         send(client_socket, response, strlen(response), 0);
