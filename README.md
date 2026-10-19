@@ -50,23 +50,7 @@ cd bash-script
 ## Стек
 `C`, `POSIX`, `sockets`, `fork`, `signals`, `Bash`, `Linux`
 
-## Структура
-```
-.
-├── http-server/      # HTTP-сервер на C
-│   ├── src/
-│   ├── include/
-│   ├── www/
-│   ├── tests/
-│   ├── Makefile
-│   └── README.md
-└── bash-script/      # Bash-скрипт
-    ├── script.sh
-    ├── tests/
-    └── README.md
-```
-
-## Чему научился
+## Технические детали
 - Сокеты: `socket` / `bind` / `listen` / `accept`
 - `fork()`: многопроцессность, зомби-процессы
 - Сигналы: `SIGCHLD`, `SIGINT`
